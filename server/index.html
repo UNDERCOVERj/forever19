@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" id="file">
+    <script>
+        // fetch('http://localhost:3000/api/pdf');
+        
+        var input = document.querySelector('#file');
+        input.onchange = function() {
+            var file = this.files[0];
+            var reader = new FileReader();
+            reader.readAsDataURL(file)
+            reader.onload = function() {
+                
+                var a = document.createElement('a');
+                a.setAttribute('download', 'aa.jpg');
+                a.href = reader.result;
+                document.body.appendChild(a);
+                a.click();
+            }
+        }
+    </script>
+</body>
+</html>
